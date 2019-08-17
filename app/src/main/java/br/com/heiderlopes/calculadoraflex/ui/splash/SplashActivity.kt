@@ -26,6 +26,7 @@ class SplashActivity : AppCompatActivity() {
             showLogin()
         }
     }
+    
     private fun markAppAlreadyOpen(preferences: SharedPreferences) {
         val editor = preferences.edit()
         editor.putBoolean("open_first", false)
@@ -45,7 +46,7 @@ class SplashActivity : AppCompatActivity() {
         ivLogo.startAnimation(anim)
 
         Handler().postDelayed({
-            val nextScreen = Intent(this@SplashActivity, FormActivity::class.java)
+            val nextScreen = Intent(this@SplashActivity, LoginActivity::class.java)
             startActivity(nextScreen)
             finish()
         }, TEMPO_AGUARDO_SPLASHSCREEN)

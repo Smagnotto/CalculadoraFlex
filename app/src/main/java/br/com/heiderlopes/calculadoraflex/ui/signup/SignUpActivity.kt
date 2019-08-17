@@ -34,7 +34,8 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun saveInRealTimeDatabase() {
-        val user = User(inputName.text.toString(), inputEmail.text.toString(), inputPhone.text.toString())
+        val user = User(inputName.text.toString(), inputEmail.text.toString(),
+            inputPhone.text.toString())
         FirebaseDatabase.getInstance().getReference("Users")
             .child(FirebaseAuth.getInstance().currentUser!!.uid)
             .setValue(user)
@@ -42,13 +43,13 @@ class SignUpActivity : AppCompatActivity() {
                 if (it.isSuccessful) {
                     Toast.makeText(this, "Usuário criado com sucesso",
                         Toast.LENGTH_SHORT).show()
-
                     val returnIntent = Intent()
                     returnIntent.putExtra("email", inputEmail.text.toString())
                     setResult(RESULT_OK, returnIntent)
                     finish()
-                }else {
-                    Toast.makeText(this, "Erro ao criar o usuário", Toast.LENGTH_SHORT).show();
+                    finish()
+                } else {
+                    Toast.makeText(this, "Erro ao criar o usuário", Toast.LENGTH_SHORT).show()
                 }
             }
     }

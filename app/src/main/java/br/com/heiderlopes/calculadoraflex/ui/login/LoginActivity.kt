@@ -1,5 +1,6 @@
 package br.com.heiderlopes.calculadoraflex.ui.login
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,6 +20,9 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         mAuth = FirebaseAuth.getInstance()
+
+        mAuth.currentUser?.reload()
+
         if (mAuth.currentUser != null) {
             goToHome()
         }
@@ -47,5 +51,12 @@ class LoginActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
         finish()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == newUserRequestCode && resultCode == Activity.RESULT_OK) {
+            inputLoginEmail.setText(data?.getStringExtra("email"))
+        }
     }
 }

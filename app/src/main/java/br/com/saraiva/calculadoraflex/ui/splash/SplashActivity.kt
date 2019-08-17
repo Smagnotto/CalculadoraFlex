@@ -1,4 +1,4 @@
-package br.com.heiderlopes.calculadoraflex.ui.splash
+package br.com.br.com.saraiva.br.com.saraiva.ui.splash
 
 import android.content.Context
 import android.content.Intent
@@ -8,8 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
 import br.com.heiderlopes.calculadoraflex.R
-import br.com.heiderlopes.calculadoraflex.ui.form.FormActivity
-import br.com.heiderlopes.calculadoraflex.ui.login.LoginActivity
+import br.com.br.com.saraiva.br.com.saraiva.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {

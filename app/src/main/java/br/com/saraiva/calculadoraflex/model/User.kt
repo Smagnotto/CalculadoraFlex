@@ -1,4 +1,4 @@
-package br.com.saraiva.calculadoraflex.model
+package br.com.br.com.saraiva.model
 
 data class User(
     val nome: String = "",

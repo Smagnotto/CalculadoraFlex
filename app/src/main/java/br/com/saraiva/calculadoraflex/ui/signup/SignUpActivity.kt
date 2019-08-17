@@ -1,11 +1,11 @@
-package br.com.heiderlopes.calculadoraflex.ui.signup
+package br.com.br.com.saraiva.br.com.saraiva.ui.signup
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import br.com.heiderlopes.calculadoraflex.R
-import br.com.saraiva.calculadoraflex.model.User
+import br.com.br.com.saraiva.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -34,8 +34,10 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun saveInRealTimeDatabase() {
-        val user = User(inputName.text.toString(), inputEmail.text.toString(),
-            inputPhone.text.toString())
+        val user = User(
+            inputName.text.toString(), inputEmail.text.toString(),
+            inputPhone.text.toString()
+        )
         FirebaseDatabase.getInstance().getReference("Users")
             .child(FirebaseAuth.getInstance().currentUser!!.uid)
             .setValue(user)

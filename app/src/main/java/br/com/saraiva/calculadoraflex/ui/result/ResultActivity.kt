@@ -13,6 +13,9 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+
         if (intent.extras == null) {
             Toast.makeText(this, "Não foi possível realizar a operação", Toast.LENGTH_SHORT);
         }else {
@@ -20,11 +23,16 @@ class ResultActivity : AppCompatActivity() {
         }
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     private fun calculate() {
-        val gasPrice = intent.extras?.getDouble("GAS_PRICE") ?: 1.0
-        val ethanolPrice = intent.extras?.getDouble("ETHANOL_PRICE") ?: 0.0
-        val gasAverage = intent.extras?.getDouble("GAS_AVERAGE") ?: 1.0
-        val ethanolAverage = intent.extras?.getDouble("ETHANOL_AVERAGE") ?: 0.0
+        val gasPrice = intent.extras?.getString("GAS_PRICE")?.toDouble() ?: 1.0
+        val ethanolPrice = intent.extras?.getString("ETHANOL_PRICE")?.toDouble() ?: 0.0
+        val gasAverage = intent.extras?.getString("GAS_AVERAGE")?.toDouble() ?: 1.0
+        val ethanolAverage = intent.extras?.getString("ETHANOL_AVERAGE")?.toDouble() ?: 0.0
 
         val performanceOfMyCar = ethanolAverage / gasAverage
         val priceOfFuelIndice = ethanolPrice / gasPrice
